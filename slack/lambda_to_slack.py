@@ -3,6 +3,7 @@
 import requests
 import json
 import random
+import os
 
 def lambda_handler(event, context):
 

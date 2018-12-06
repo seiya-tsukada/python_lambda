@@ -19,8 +19,18 @@ zip upload to lambda
 ```
 aws lambda \
 update-function-code \
---profile <aws_profile> \
---function-name <function_name> \
+--function-name [function_name] \
 --zip-file fileb:///tmp/output.zip \
---publish
+--publish \
+--region ap-northeast-1
+```
+
+test
+
+```
+aws lambda invoke --invocation-type Event \
+--function-name [finction_name] \
+--payload '{"key1": "value1"}' \
+--region ap-northeast-1
+output.txt
 ```
