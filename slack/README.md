@@ -25,12 +25,12 @@ update-function-code \
 --region ap-northeast-1
 ```
 
-test
+invoke to lambda
 
 ```
 aws lambda invoke --invocation-type Event \
 --function-name [finction_name] \
 --payload '{"key1": "value1"}' \
---region ap-northeast-1
+--region ap-northeast-1 \
 output.txt
 ```
