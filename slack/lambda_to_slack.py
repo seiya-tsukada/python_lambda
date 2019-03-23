@@ -5,23 +5,36 @@ import json
 import random
 import os
 
+slack_url = os.environ.get("SLACK_URL")
+
 def lambda_handler(event, context):
 
-    year_list = ["28", "29", "30"]
-    half_list = ["1", "2"]
-    question_list = list()
-    slack_url = os.environ.get("SLACK_URL")
+    for i in range(1, 3):
+        network_exam(i)
+
+    toeix_exam_alc()
+
+    return {
+        "statusCode": 200,
+        "body": json.dumps("OK")
+    } 
+
+def network_exam(part_num);
+
+    ret = ""
 
     # site_url_base = "https://www.nw-siken.com/kakomon/30_aki/am1_2.html"
-
     site_url_base = "https://www.nw-siken.com/kakomon/"
-    year = random.choice(year_list)
-    half = random.choice(half_list)
 
-    if half == "1":
+    year_list = ["27", "28", "29", "30"]
+    year = random.choice(year_list)
+
+    question_list = list()
+    question = ""
+    if part_num == "1":
         question_list = range(1, 31)
         question = random.choice(question_list)
-    elif half == "2":
+    elif part_num == "2":
         question_list = range(1, 26)
         question = random.choice(question_list)
 
@@ -30,20 +43,35 @@ def lambda_handler(event, context):
     site_url = site_url_base + suffix_url
 
     print site_url
+    ret = post_slack(site_url)
 
-    # create content
-    content = """
+    return ret
 
-    今日の問題はこれです
+def toeix_exam_alc():
 
-    {0}
+    ret = ""
+    site_url = "https://www.alc.co.jp/toeic/article/daily/"
+    
+    ret = post_slack(site_url)
 
-    """.format(site_url)
+    return ret
+
+def post_slack(text):
+
+    ret = ""
+    pretext = "今日の問題です"
+
 
     # post to slack
-    requests.post(slack_url, data = json.dumps({
-        "text": content,
+    ret = requests.post(slack_url, data = json.dumps({
+        "channel": "#memo", 
         "username": "my_bot",
         "icon_emoji": ":ghost:",
         "link_names": 1,
+        "attachments": [{
+            "text": text,
+            "pretext": pretext,
+        }]
     }))
+
+    return ret 
