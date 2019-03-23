@@ -38,7 +38,7 @@ def network_exam(part_num):
         question_list = range(1, 26)
         question = random.choice(question_list)
 
-    suffix_url = "{0}_aki/am{1}_{2}.html".format(year, half, question)
+    suffix_url = "{0}_aki/am{1}_{2}.html".format(year, part_num, question)
 
     site_url = site_url_base + suffix_url
 
