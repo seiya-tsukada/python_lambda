@@ -19,7 +19,7 @@ def lambda_handler(event, context):
         "body": json.dumps("OK")
     } 
 
-def network_exam(part_num);
+def network_exam(part_num):
 
     ret = ""
 
@@ -42,7 +42,7 @@ def network_exam(part_num);
 
     site_url = site_url_base + suffix_url
 
-    print site_url
+    print(site_url)
     ret = post_slack(site_url)
 
     return ret
