@@ -17,7 +17,7 @@ def lambda_handler(event, context):
     return {
         "statusCode": 200,
         "body": json.dumps("OK")
-    } 
+    }
 
 def network_exam(part_num):
 
@@ -31,10 +31,10 @@ def network_exam(part_num):
 
     question_list = list()
     question = ""
-    if part_num == "1":
+    if part_num == 1:
         question_list = range(1, 31)
         question = random.choice(question_list)
-    elif part_num == "2":
+    elif part_num == 2:
         question_list = range(1, 26)
         question = random.choice(question_list)
 
@@ -51,7 +51,8 @@ def toeix_exam_alc():
 
     ret = ""
     site_url = "https://www.alc.co.jp/toeic/article/daily/"
-    
+
+    print(site_url)
     ret = post_slack(site_url)
 
     return ret
@@ -64,7 +65,7 @@ def post_slack(text):
 
     # post to slack
     ret = requests.post(slack_url, data = json.dumps({
-        "channel": "#memo", 
+        "channel": "#memo",
         "username": "my_bot",
         "icon_emoji": ":ghost:",
         "link_names": 1,
@@ -74,4 +75,4 @@ def post_slack(text):
         }]
     }))
 
-    return ret 
+    return ret
