@@ -50,7 +50,6 @@ def english_story(story_number):
 
     return ret
 
-
 def tag_extraction(text):
 
     pattern = r"<[^>]*?>"
@@ -58,8 +57,6 @@ def tag_extraction(text):
     return p.sub("", text)
 
 def post_slack(site_url, content, content_title, content_sub_title):
-
-    slack_url = "https://hooks.slack.com/services/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"
 
     ret = ""
     text = content
@@ -69,7 +66,7 @@ def post_slack(site_url, content, content_title, content_sub_title):
 
     # post to slack
     ret = requests.post(slack_url, data = json.dumps({
-        "channel": "#memo",
+        "channel": "#english_story",
         "username": "my_bot",
         "icon_emoji": ":ghost:",
         "link_names": 1,
@@ -82,5 +79,3 @@ def post_slack(site_url, content, content_title, content_sub_title):
     }))
 
     return ret
-
-lambda_handler("", "")
