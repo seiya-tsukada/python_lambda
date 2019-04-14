@@ -5,7 +5,7 @@ import json
 import random
 import os
 import re
-from bs4 import BeautifulSoup  
+from bs4 import BeautifulSoup
 
 slack_url = os.environ.get("SLACK_URL")
 
@@ -42,7 +42,7 @@ def english_story(story_number):
 
     content = ""
     for i in content_class_body:
-        content = content + str(i)
+        content = content + tag_extraction(str(i)) + "\r\n"
 
     print(content)
 
