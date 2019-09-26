@@ -9,7 +9,11 @@ slack_url = os.environ.get("SLACK_URL")
 
 def lambda_handler(event, context):
 
-    for i in range(1, 3):
+    # for i in range(1, 3):
+    #    network_exam(i)
+
+    part_list = [2, 2, 2]
+    for i in part_list:
         network_exam(i)
 
     toeix_exam_alc()
