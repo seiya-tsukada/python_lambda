@@ -30,7 +30,7 @@ def network_exam(part_num):
     # site_url_base = "https://www.nw-siken.com/kakomon/30_aki/am1_2.html"
     site_url_base = "https://www.nw-siken.com/kakomon/"
 
-    year_list = ["27", "28", "29", "30"]
+    year_list = ["26", "27", "28", "29", "30"]
     year = random.choice(year_list)
 
     question_list = list()
