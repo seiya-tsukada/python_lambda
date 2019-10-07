@@ -1,1 +1,1 @@
-# python_lambda
+# lambda_sns
