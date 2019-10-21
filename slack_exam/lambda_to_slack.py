@@ -9,12 +9,10 @@ slack_url = os.environ.get("SLACK_URL")
 
 def lambda_handler(event, context):
 
-    # for i in range(1, 3):
-    #    network_exam(i)
-
-    part_list = [2, 2, 2]
-    for i in part_list:
-        network_exam(i)
+    # part_list = [2, 2, 2]
+    # for i in part_list:
+    #     network_exam(i)
+    network_exam(2)
 
     toeix_exam_alc()
 
@@ -30,7 +28,8 @@ def network_exam(part_num):
     # site_url_base = "https://www.nw-siken.com/kakomon/30_aki/am1_2.html"
     site_url_base = "https://www.nw-siken.com/kakomon/"
 
-    year_list = ["26", "27", "28", "29", "30"]
+    year_list = list(range(21, 31))
+    # print(year_list)
     year = random.choice(year_list)
 
     question_list = list()
